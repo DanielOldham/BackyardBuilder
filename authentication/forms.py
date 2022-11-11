@@ -11,19 +11,13 @@ class SignupForm(UserCreationForm):
         for field in self.fields.values():
             field.widget.attrs["class"] = "form-control"
 
+        # self.fields['username'].widget.attrs.update({'placeholder': 'type your username'})
+        # self.fields['password'].widget.attrs.update({'placeholder': 'type your password'})
+
     class Meta:
         model = User
 
         fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2']
-
-        labels = {
-            "username": "Username",
-            "email": "Email",
-            "first_name": "First Name",
-            "last_name": "Last Name",
-            "password1": "Password",
-            "password2": "Confirm Password",
-        }
 
 
 class LoginForm(AuthenticationForm):

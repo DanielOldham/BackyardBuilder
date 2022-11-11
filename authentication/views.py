@@ -20,10 +20,28 @@ def login(request):
                 auth.login(request, user)
                 return redirect('dashboard:dashboard')
         else:
-            # User is not created
-            # If there were errors, we render the form with these
-            return render(request, 'authentication/login.html', {'form': form, 'page_title': "Login"})
+            # errors logging in
+            return render(request, 'authentication/login.html', {'form': form})
 
+
+def signup(request):
+    if request.method == 'GET':
+        form = SignupForm()
+        return render(request, 'authentication/signup.html', {'form': form})
+
+    if request.method == 'POST':
+        form = SignupForm(request=request, data=request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = auth.authenticate(username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+                return redirect('dashboard:dashboard')
+        else:
+            # user is not created
+            return render(request, 'authentication/signup.html', {'form': form})
 
 
 

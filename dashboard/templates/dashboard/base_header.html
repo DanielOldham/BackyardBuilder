@@ -21,6 +21,8 @@
             --nav-grey: #080c12;
 
             --background-blue: #122542;
+
+            --btn-blue: #264f8c;
         }
 
 
@@ -48,16 +50,19 @@
             background-color: var(--nav-grey);
             color: var(--primary-orange);
         }
+        .card {
+            border-color: var(--background-blue);
+        }
 
 
         {# button styles #}
         .btn-primary {
-            {#background-color: var(--primary-orange);#}
-            {#border-color: var(--primary-orange);#}
+            background-color: var(--btn-blue);
+            border-color: var(--btn-blue);
         }
         .btn-primary:hover {
-            {#background-color: var(--primary-orange-dark) !important;#}
-            {#border-color: var(--primary-orange-dark) !important;#}
+            background-color: var(--background-blue) !important;
+            border-color: var(--background-blue) !important;
         }
 
     </style>
