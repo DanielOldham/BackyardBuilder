@@ -13,23 +13,53 @@
 
     {# styles #}
     <style>
+        {# variables #}
+        :root {
+            --primary-orange: #e39e36;
+            --primary-orange-dark: #b47618;
+
+            --nav-grey: #080c12;
+
+            --background-blue: #122542;
+        }
+
+
+        {# body styles #}
         body {
-            background-color: #122542;
+            background-color: var(--background-blue);
         }
 
+
+        {# nav styles #}
         nav {
-            background-color: #080c12;
-            border-bottom: #e39e36 solid 1px;
+            background-color: var(--nav-grey);
+            border-bottom: var(--primary-orange) solid 1px;
         }
-
         .navbar-brand {
-            color: #e39e36;
+            color: var(--primary-orange);
+        }
+        .navbar-brand:hover {
+            color: var(--primary-orange-dark) !important;
         }
 
+
+        {# card styles #}
         .card-header {
-            background-color: #080c12;
-            color: #e39e36;
+            background-color: var(--nav-grey);
+            color: var(--primary-orange);
         }
+
+
+        {# button styles #}
+        .btn-primary {
+            {#background-color: var(--primary-orange);#}
+            {#border-color: var(--primary-orange);#}
+        }
+        .btn-primary:hover {
+            {#background-color: var(--primary-orange-dark) !important;#}
+            {#border-color: var(--primary-orange-dark) !important;#}
+        }
+
     </style>
 </head>
 <body>

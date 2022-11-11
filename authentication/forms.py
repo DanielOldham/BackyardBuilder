@@ -33,6 +33,9 @@ class LoginForm(AuthenticationForm):
         for field in self.fields.values():
             field.widget.attrs["class"] = "form-control"
 
+        self.fields['username'].widget.attrs.update({'placeholder': 'type your username'})
+        self.fields['password'].widget.attrs.update({'placeholder': 'type your password'})
+
     class Meta:
         model = User
 
