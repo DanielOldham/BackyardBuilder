@@ -3,7 +3,13 @@
     <div class="row">
         <div class="col-8 offset-2 my-4">
             <div class="card">
-                <h2 class="card-header">Welcome!</h2>
+                <h2 class="card-header">
+                    {% if request.user.is_authenticated %}
+                        <span style="color: white !important;">Welcome, </span>{{ request.user.username }}<span style="color: white !important;">!</span>
+                    {% else %}
+                        Welcome!
+                    {% endif %}
+                </h2>
 
                 <div class="card-body">
                     <div class="card-text">Welcome to the Backyard Builder!</div>
