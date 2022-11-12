@@ -13,8 +13,8 @@ class SignupForm(UserCreationForm):
 
         self.fields['username'].widget.attrs.update({'placeholder': 'type your username'})
         self.fields['email'].widget.attrs.update({'placeholder': 'type your email'})
-        self.fields['first_name'].widget.attrs.update({'placeholder': 'type your first name'})
-        self.fields['last_name'].widget.attrs.update({'placeholder': 'type your last name'})
+        self.fields['first_name'].widget.attrs.update({'placeholder': 'type your first name'}, required=True)
+        self.fields['last_name'].widget.attrs.update({'placeholder': 'type your last name'}, required=True)
         self.fields['password1'].widget.attrs.update({'placeholder': 'type your password'})
         self.fields['password2'].widget.attrs.update({'placeholder': 'confirm your password'})
 
