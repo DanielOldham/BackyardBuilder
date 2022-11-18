@@ -1,6 +1,6 @@
 {% extends 'dashboard/base.html' %}
 {% block body %}
-    <div class="col-8 offset-2 my-4">
+    <div class="col-10 offset-1 my-4">
         <div class="card">
             <h1 class="card-header text-center">
                 <i class="bi bi-list-ul"></i>
@@ -11,14 +11,68 @@
             <div class="accordion" id="searchAccordion">
                 <div class="accordion-item" style="border-radius: 0;">
                     <h2 class="accordion-header" id="headingOne" >
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="border-radius: 0;">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="border-radius: 0;">
                             <i class="bi bi-search"></i>
                             &nbsp;&nbsp;Search Options
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-text">
+                                            Cases&nbsp;&nbsp;
+                                            <input class="form-check-input mt-0" type="checkbox" value="" id="caseCheck">
+                                        </div>
+
+                                        <div class="input-group-text">
+                                            Coolers&nbsp;&nbsp;
+                                            <input class="form-check-input mt-0" type="checkbox" value="" id="coolerCheck">
+                                        </div>
+
+                                        <div class="input-group-text">
+                                            CPUs&nbsp;&nbsp;
+                                            <input class="form-check-input mt-0" type="checkbox" value="" id="cpuCheck">
+                                        </div>
+
+                                        <div class="input-group-text">
+                                            Graphics Cards&nbsp;&nbsp;
+                                            <input class="form-check-input mt-0" type="checkbox" value="" id="graphicsCheck">
+                                        </div>
+
+                                        <div class="input-group-text">
+                                            Motherboards&nbsp;&nbsp;
+                                            <input class="form-check-input mt-0" type="checkbox" value="" id="moboCheck">
+                                        </div>
+
+                                        <div class="input-group-text">
+                                            Power Supplies&nbsp;&nbsp;
+                                            <input class="form-check-input mt-0" type="checkbox" value="" id="powerCheck">
+                                        </div>
+
+                                        <div class="input-group-text">
+                                            RAM&nbsp;&nbsp;
+                                            <input class="form-check-input mt-0" type="checkbox" value="" id="ramCheck">
+                                        </div>
+
+                                        <div class="input-group-text">
+                                            Storage Drives&nbsp;&nbsp;
+                                            <input class="form-check-input mt-0" type="checkbox" value="" id="storageCheck">
+                                        </div>
+
+                                        <input type="text" class="form-control" placeholder="manufacturer" value="" id="manufactureInput">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-group input-group-sm">
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
