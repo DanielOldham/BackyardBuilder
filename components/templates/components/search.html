@@ -18,79 +18,85 @@
                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
 
-                            <ul class="list-group list-group-flush">
-{#                            <div class="row">#}
-                                <li class="list-group-item">
+                            <form action="" method="GET">
 
-                                <div class="col-10 offset-1 text-center">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="" id="caseCheck">
-                                        <label class="form-check-label" for="caseCheck">Cases&nbsp;&nbsp;</label>
-                                    </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item py-3">
+                                        Currently searching for <strong>all.</strong>
+                                    </li>
+                                    <li class="list-group-item py-3">
 
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="" id="coolerCheck">
-                                        <label class="form-check-label" for="coolerCheck">Coolers&nbsp;&nbsp;</label>
-                                    </div>
+                                        <div class="col-10 offset-1 text-center">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="" id="caseCheck" name="caseCheck">
+                                                <label class="form-check-label" for="caseCheck">Cases&nbsp;&nbsp;</label>
+                                            </div>
 
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="" id="cpuCheck">
-                                        <label class="form-check-label" for="cpuCheck">CPUs&nbsp;&nbsp;</label>
-                                    </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="" name="coolerCheck">
+                                                <label class="form-check-label" for="coolerCheck">Coolers&nbsp;&nbsp;</label>
+                                            </div>
 
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="" id="graphicsCheck">
-                                        <label class="form-check-label" for="graphicsCheck">Graphics Cards&nbsp;&nbsp;</label>
-                                    </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="" name="cpuCheck">
+                                                <label class="form-check-label" for="cpuCheck">CPUs&nbsp;&nbsp;</label>
+                                            </div>
 
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="" id="moboCheck">
-                                        <label class="form-check-label" for="moboCheck">Motherboards&nbsp;&nbsp;</label>
-                                    </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="" name="graphicsCheck">
+                                                <label class="form-check-label" for="graphicsCheck">Graphics Cards&nbsp;&nbsp;</label>
+                                            </div>
 
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="" id="powerCheck">
-                                        <label class="form-check-label" for="powerCheck">Power Supplies&nbsp;&nbsp;</label>
-                                    </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="" name="moboCheck">
+                                                <label class="form-check-label" for="moboCheck">Motherboards&nbsp;&nbsp;</label>
+                                            </div>
 
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="" id="ramCheck">
-                                        <label class="form-check-label" for="ramCheck">RAM&nbsp;&nbsp;</label>
-                                    </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="" name="powerCheck">
+                                                <label class="form-check-label" for="powerCheck">Power Supplies&nbsp;&nbsp;</label>
+                                            </div>
 
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="" id="storageCheck">
-                                        <label class="form-check-label" for="storageCheck">Storage Drives&nbsp;&nbsp;</label>
-                                    </div>
-                                </div>
-{#                            </div>#}
-                                </li>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="" name="ramCheck">
+                                                <label class="form-check-label" for="ramCheck">RAM&nbsp;&nbsp;</label>
+                                            </div>
 
-                                <li class="list-group-item">
-{#                            <div class="row mt-3">#}
-                                <div class="col-10 offset-1">
-                                    <div class="input-group">
-                                        <span class="input-group-text">Search keyword:</span>
-                                        <input class="form-control" type="text" id="keywordInput" placeholder="eg. Ryzen">
-                                    </div>
-                                </div>
-{#                            </div>#}
-                                </li>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="" name="storageCheck">
+                                                <label class="form-check-label" for="storageCheck">Storage Drives&nbsp;&nbsp;</label>
+                                            </div>
+                                        </div>
+                                    </li>
 
-                                <li class="list-group-item">
-{#                            <div class="row mt-3">#}
-                                <div class="col-10 offset-1">
-                                    <div class="input-group">
-                                        <span class="input-group-text">Price: from</span>
-                                        <input class="form-control" type="text" id="lowerPriceInput" placeholder="$0.00">
+                                    <li class="list-group-item py-3">
+                                        <div class="col-10 offset-1">
+                                            <div class="input-group">
+                                                <span class="input-group-text">Search keyword:</span>
+                                                <input class="form-control" type="text" name="keywordInput" placeholder="eg. Ryzen">
+                                            </div>
+                                        </div>
+                                    </li>
 
-                                        <span class="input-group-text">to</span>
-                                        <input class="form-control" type="text" id="lowerPriceInput" placeholder="$100.00">
-                                    </div>
-                                </div>
-{#                            </div>#}
-                                </li>
-                            </ul>
+                                    <li class="list-group-item py-3">
+                                        <div class="col-10 offset-1">
+                                            <div class="input-group">
+                                                <span class="input-group-text">Price: from</span>
+                                                <input class="form-control" type="number" name="lowerPriceInput" placeholder="$0.00">
+
+                                                <span class="input-group-text">to</span>
+                                                <input class="form-control" type="number" name="upperPriceInput" placeholder="$100.00">
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="list-group-item py-3">
+                                        <div class="col-10 offset-1">
+                                            <button type="submit" class="btn btn-primary">Search</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -100,23 +106,23 @@
 
             {% for component in components %}
                 {% if forloop.counter0|divisibleby:2 %}
-                <div class="row"><div class="card-group">
+                    <div class="row"><div class="card-group">
                 {% endif %}
 
-                    <div class="card" style="border-top: none; border-radius: 0;">
-                        <img src="{{ component.image.url }}" class="card-img-top px-4 py-2">
+            <div class="card" style="border-top: none; border-radius: 0;">
+                <img src="{{ component.image.url }}" class="card-img-top px-4 py-2">
 
-                        <div class="card-body">
-                            <h5 class="card-title">{{ component.name }}</h5>
-                        </div>
-                        <div class="card-footer">
-                            ${{ component.price }}
-                        </div>
-                    </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ component.name }}</h5>
+                </div>
+                <div class="card-footer">
+                    ${{ component.price }}
+                </div>
+            </div>
 
-                {% if forloop.counter|divisibleby:2 %}
+            {% if forloop.counter|divisibleby:2 %}
                 </div></div>
-                {% endif %}
+            {% endif %}
             {% endfor %}
         </div>
     </div>
