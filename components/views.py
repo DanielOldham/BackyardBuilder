@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-from itertools import chain
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -152,5 +152,10 @@ def search(request):
         if keyword_input is not None and keyword_input != '':
             components = components.filter(name__icontains=keyword_input)
 
-    context['components'] = components
+    # paginator
+    paginator = Paginator(components, 4)
+    page = 1
+    component_paginator = paginator.get_page(1)
+
+    context['components'] = component_paginator
     return render(request, 'components/search.html', context)

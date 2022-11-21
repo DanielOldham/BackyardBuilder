@@ -22,7 +22,7 @@
 
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item py-3">
-                                        Currently searching for <strong>all.</strong>
+                                        I would like to search for...
                                     </li>
                                     <li class="list-group-item py-3">
 
@@ -33,37 +33,37 @@
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" name="coolerCheck">
+                                                <input class="form-check-input" type="checkbox" value="" id="coolerCheck" name="coolerCheck">
                                                 <label class="form-check-label" for="coolerCheck">Coolers&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" name="cpuCheck">
+                                                <input class="form-check-input" type="checkbox" value="" id="cpuCheck" name="cpuCheck">
                                                 <label class="form-check-label" for="cpuCheck">CPUs&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" name="graphicsCheck">
+                                                <input class="form-check-input" type="checkbox" value="" id="graphicsCheck" name="graphicsCheck">
                                                 <label class="form-check-label" for="graphicsCheck">Graphics Cards&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" name="moboCheck">
+                                                <input class="form-check-input" type="checkbox" value="" id="moboCheck" name="moboCheck">
                                                 <label class="form-check-label" for="moboCheck">Motherboards&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" name="powerCheck">
+                                                <input class="form-check-input" type="checkbox" value="" id="powerCheck" name="powerCheck">
                                                 <label class="form-check-label" for="powerCheck">Power Supplies&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" name="ramCheck">
+                                                <input class="form-check-input" type="checkbox" value="" id="ramCheck" name="ramCheck">
                                                 <label class="form-check-label" for="ramCheck">RAM&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" name="storageCheck">
+                                                <input class="form-check-input" type="checkbox" value="" id="storageCheck" name="storageCheck">
                                                 <label class="form-check-label" for="storageCheck">Storage Drives&nbsp;&nbsp;</label>
                                             </div>
                                         </div>
@@ -91,8 +91,8 @@
                                     </li>
 
                                     <li class="list-group-item py-3">
-                                        <div class="col-10 offset-1">
-                                            <button type="submit" class="btn btn-primary">Search</button>
+                                        <div class="d-grid gap-2 col-6 mx-auto">
+                                            <input type="submit" class="btn btn-block btn-primary" value="Search">
                                         </div>
                                     </li>
                                 </ul>
@@ -103,27 +103,41 @@
             </div>
 
 
+            {% if not components %}
+                <div class="row card-body">
+                    <h4 class="card-title text-center">
+                        There are no results for your search.
+                    </h4>
+                    <div class="card-text text-center">
+                        <a href="{% url 'components:search' %}">search again</a>
+                    </div>
+                </div>
+            {% endif %}
 
             {% for component in components %}
-                {% if forloop.counter0|divisibleby:2 %}
+                {% if forloop.counter0 == 0 %}
+                    <div class="row"><div class="card-group">
+                {% elif forloop.counter0|divisibleby:2 %}
+                    </div></div>
                     <div class="row"><div class="card-group">
                 {% endif %}
 
-            <div class="card" style="border-top: none; border-radius: 0;">
-                <img src="{{ component.image.url }}" class="card-img-top px-4 py-2">
+                <div class="card" style="border-top: none; border-radius: 0;">
+                    <img src="{{ component.image.url }}" class="card-img-top px-4 py-2">
 
-                <div class="card-body">
-                    <h5 class="card-title">{{ component.name }}</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ component.name }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        ${{ component.price }}
+                    </div>
                 </div>
-                <div class="card-footer">
-                    ${{ component.price }}
-                </div>
-            </div>
-
-            {% if forloop.counter|divisibleby:2 %}
-                </div></div>
-            {% endif %}
             {% endfor %}
+            </div></div>
+
+            <div class="card-footer" style="background-color: var(--nav-grey); color: var(--primary-orange);">
+                this will be the paginator
+            </div>
         </div>
     </div>
 {% endblock %}
