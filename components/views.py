@@ -154,8 +154,8 @@ def search(request):
 
     # paginator
     paginator = Paginator(components, 4)
-    page = 1
-    component_paginator = paginator.get_page(1)
+    page = request.GET.get('page')
+    component_paginator = paginator.get_page(page)
 
     context['components'] = component_paginator
     return render(request, 'components/search.html', context)

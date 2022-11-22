@@ -17,6 +17,7 @@
         :root {
             --primary-orange: #e39e36;
             --primary-orange-dark: #b47618;
+            --primary-orange-darker: #9d6715;
 
             --nav-grey: #080c12;
 
@@ -63,6 +64,24 @@
         .btn-primary:hover {
             background-color: var(--nav-grey) !important;
             border-color: var(--nav-grey) !important;
+        }
+
+        .btn-orange {
+            background-color: var(--primary-orange);
+            border-color: var(--primary-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            background-color: var(--primary-orange-dark) !important;
+            border-color: var(--primary-orange-dark) !important;
+            color: white;
+        }
+
+        .btn-orange.disabled {
+            background-color: var(--primary-orange-darker);
+            border-color: var(--primary-orange-darker);
+            color: #e6e6e6;
         }
 
 
