@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.core.paginator import Paginator
+from django.contrib.contenttypes.models import ContentType
 
 
 # Create your views here.
@@ -159,3 +160,12 @@ def search(request):
 
     context['components'] = component_paginator
     return render(request, 'components/search.html', context)
+
+
+def detail(request, component_id):
+    context = {}
+
+    component = Component.objects.get(id=component_id)
+    context['component'] = component
+
+    return render(request, 'components/detail.html', context)
