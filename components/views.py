@@ -166,6 +166,7 @@ def detail(request, component_id):
     context = {}
 
     component = Component.objects.get(id=component_id)
-    context['component'] = component
+    context['type'] = component.get_type()
+    context['component'] = component.get_child()
 
     return render(request, 'components/detail.html', context)

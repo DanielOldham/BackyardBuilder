@@ -2,8 +2,60 @@
 {% block body %}
     <div class="col-8 offset-2 my-4">
         <div class="card">
-            <div class="card-header">
-                Component Detail
+            <h1 class="card-header text-center">Component Detail</h1>
+
+            <img src="{{ component.image.url }}" class="card-img-top px-4 py-2" style="border-bottom: 2px solid var(--nav-grey);">
+            <div class="card-body">
+                <h4 class="card-title">{{ component.name }}</h4>
+                <p class="card-text">Manufactured by <strong>{{ component.manufacturer }}</strong></p>
+
+                {# extra fields #}
+                {% if type == 'CPU' %}
+                    <p class="card-text">Clock speed: <strong>{{ component.speed }}</strong> GHz</p>
+                {% elif type == 'RAM' %}
+                    <p class="card-text">RAM speed: <strong>{{ component.speed }} MHz</strong></p>
+                    <p class="card-text">Memory size: <strong>{{ component.size }} GB</strong></p>
+                {% elif type == 'Graphics' %}
+                    <p class="card-text">VRAM size: <strong>{{ component.size }} GB</strong></p>
+                {% elif type == 'Case' %}
+                    <p class="card-text">Color: <strong>{{ component.color }}</strong></p>
+                {% elif type == 'Motherboard' %}
+                    <p class="card-text">Socket type: <strong>{{ component.socket }}</strong></p>
+                {% elif type == 'Storage' %}
+                    <p class="card-text">Size: <strong>{{ component.size }} GB</strong></p>
+                {% elif type == 'PowerSupply' %}
+                    <p class="card-text">Power: <strong>{{ component.power }} W</strong></p>
+                {% elif type == 'Cooler' %}
+                    <p class="card-text">Cooler type: <strong>{{ component.type }}</strong></p>
+                {% endif %}
+
+                <p class="card-text"><strong>${{ component.price }}</strong></p>
+                <a href="{{ component.link }}" target="_blank">Visit this item here!</a>
+            </div>
+
+            <div class="card-footer py-3">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="dropdown">
+                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Add component to build
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-6 text-end">
+                        <a href="{% url 'components:search' %}">
+                            <i class="bi bi-search"></i>
+                            Search Components
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

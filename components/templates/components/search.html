@@ -112,56 +112,55 @@
                         <a href="{% url 'components:search' %}">search again</a>
                     </div>
                 </div>
-            {% endif %}
+            {% else %}
+                {% for component in components %}
+                    {% if forloop.counter0 == 0 %}
+                        <div class="row"><div class="card-group">
+                    {% elif forloop.counter0|divisibleby:2 %}
+                        </div></div>
+                        <div class="row"><div class="card-group">
+                    {% endif %}
 
-            {% for component in components %}
-                {% if forloop.counter0 == 0 %}
-                    <div class="row"><div class="card-group">
-                {% elif forloop.counter0|divisibleby:2 %}
-                    </div></div>
-                    <div class="row"><div class="card-group">
-                {% endif %}
 
-
-                <div class="card" style="border-top: none; border-radius: 0;">
-                    <a href="{% url 'components:detail' component.id %}">
-                        <img src="{{ component.image.url }}" class="card-img-top px-4 py-2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ component.name }}</h5>
-                    </div>
-                    <div class="card-footer">
-                        ${{ component.price }}
-                    </div>
-                </div>
-            {% endfor %}
-            </div></div>
-
-            <div class="card-footer text-center py-4" style="background-color: var(--nav-grey); color: var(--primary-orange);">
-                <div class="col-6 offset-3">
-                    <div class="input-group">
-                        {% if components.has_previous %}
-                            <a href="?page=1" class="btn btn-orange">First</a>
-                            <a href="?page={{ components.previous_page_number }}" class="btn btn-orange">Prev.</a>
-                        {% else %}
-                            <a class="btn btn-orange disabled">First</a>
-                            <a class="btn btn-orange disabled">Prev.</a>
-                        {% endif %}
-
-                        <div class="form-control text-center" style="background-color: var(--nav-grey); border: 1px solid var(--primary-orange); color: white;">
-                            Page {{ components.number }} of {{ components.paginator.num_pages }}
+                    <div class="card" style="border-top: none; border-radius: 0;">
+                        <a href="{% url 'components:detail' component.id %}">
+                            <img src="{{ component.image.url }}" class="card-img-top px-4 py-2">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ component.name }}</h5>
                         </div>
+                        <div class="card-footer">
+                            ${{ component.price }}
+                        </div>
+                    </div>
+                {% endfor %}
+                </div></div>
+                <div class="card-footer text-center py-4" style="background-color: var(--nav-grey); color: var(--primary-orange);">
+                    <div class="col-6 offset-3">
+                        <div class="input-group">
+                            {% if components.has_previous %}
+                                <a href="?page=1" class="btn btn-orange">First</a>
+                                <a href="?page={{ components.previous_page_number }}" class="btn btn-orange">Prev.</a>
+                            {% else %}
+                                <a class="btn btn-orange disabled">First</a>
+                                <a class="btn btn-orange disabled">Prev.</a>
+                            {% endif %}
 
-                        {% if components.has_next %}
-                            <a href="?page={{ components.next_page_number }}" class="btn btn-orange">Next</a>
-                            <a href="?page={{ components.paginator.num_pages }}" class="btn btn-orange">Last</a>
-                        {% else %}
-                            <a class="btn btn-orange disabled">Next</a>
-                            <a class="btn btn-orange disabled">Last</a>
-                        {% endif %}
+                            <div class="form-control text-center" style="background-color: var(--nav-grey); border: 1px solid var(--primary-orange); color: white;">
+                                Page {{ components.number }} of {{ components.paginator.num_pages }}
+                            </div>
+
+                            {% if components.has_next %}
+                                <a href="?page={{ components.next_page_number }}" class="btn btn-orange">Next</a>
+                                <a href="?page={{ components.paginator.num_pages }}" class="btn btn-orange">Last</a>
+                            {% else %}
+                                <a class="btn btn-orange disabled">Next</a>
+                                <a class="btn btn-orange disabled">Last</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
