@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'components',
     'authentication',
     'dashboard',
+    'builds',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
