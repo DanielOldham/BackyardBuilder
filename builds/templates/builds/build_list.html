@@ -1,3 +1,43 @@
 {% extends 'dashboard/base.html' %}
 {% block body %}
+    <div class="col-8 offset-2 my-4">
+        <div class="card">
+            <h1 class="card-header text-center">
+                <i class="bi bi-clipboard-check"></i>
+                Build Plans
+            </h1>
+            <div class="row card-body">
+                {% if not builds %}
+                    <h4 class="card-title text-center mt-4">You haven't created any builds yet!</h4>
+                {% else %}
+                    <ul class="list-group list-group-flush">
+                        {% for build in builds %}
+                            <li class="list-group-item" style="font-size: 1.2em">
+                                <div class="row">
+                                    <div class="col-3 text-center" style="border-right: 1px solid lightgrey;">
+                                        <strong>{{ build.name }}</strong>
+                                    </div>
+                                    <div class="col-3 text-center" style="border-right: 1px solid lightgrey;">
+                                        <strong>{{ build.component_count }}&nbsp;/&nbsp;8</strong> components
+                                    </div>
+                                    <div class="col-3 text-center" style="border-right: 1px solid lightgrey;">
+                                        <strong>${{ build.total_price }}</strong> total cost
+                                    </div>
+                                    <div class="col-3 text-center">
+                                        <a href="#">view build</a>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="row card-body">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <a href="{% url 'builds:new_build' %}" class="btn btn-primary btn-block">Create a new build plan</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -4,4 +4,5 @@ from django.urls import path
 app_name = 'builds'
 urlpatterns = [
     path('', views.build_list, name='build_list'),
+    path('new', views.new_build, name='new_build'),
 ]
