@@ -28,42 +28,47 @@
 
                                         <div class="col-10 offset-1 text-center">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" id="caseCheck" name="caseCheck">
+                                                <input class="form-check-input" type="radio" value="Component" id="allCheck" name="componentRadio" checked>
+                                                <label class="form-check-label" for="allCheck">All&nbsp;&nbsp;</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" value="Case" id="caseCheck" name="componentRadio">
                                                 <label class="form-check-label" for="caseCheck">Cases&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" id="coolerCheck" name="coolerCheck">
+                                                <input class="form-check-input" type="radio" value="Cooler" id="coolerCheck" name="componentRadio">
                                                 <label class="form-check-label" for="coolerCheck">Coolers&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" id="cpuCheck" name="cpuCheck">
+                                                <input class="form-check-input" type="radio" value="CPU" id="cpuCheck" name="componentRadio">
                                                 <label class="form-check-label" for="cpuCheck">CPUs&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" id="graphicsCheck" name="graphicsCheck">
+                                                <input class="form-check-input" type="radio" value="Graphics" id="graphicsCheck" name="componentRadio">
                                                 <label class="form-check-label" for="graphicsCheck">Graphics Cards&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" id="moboCheck" name="moboCheck">
+                                                <input class="form-check-input" type="radio" value="Motherboard" id="moboCheck" name="componentRadio">
                                                 <label class="form-check-label" for="moboCheck">Motherboards&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" id="powerCheck" name="powerCheck">
+                                                <input class="form-check-input" type="radio" value="PowerSupply" id="powerCheck" name="componentRadio">
                                                 <label class="form-check-label" for="powerCheck">Power Supplies&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" id="ramCheck" name="ramCheck">
+                                                <input class="form-check-input" type="radio" value="RAM" id="ramCheck" name="componentRadio">
                                                 <label class="form-check-label" for="ramCheck">RAM&nbsp;&nbsp;</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" id="storageCheck" name="storageCheck">
+                                                <input class="form-check-input" type="radio" value="Storage" id="storageCheck" name="componentRadio">
                                                 <label class="form-check-label" for="storageCheck">Storage Drives&nbsp;&nbsp;</label>
                                             </div>
                                         </div>
@@ -135,30 +140,35 @@
                     </div>
                 {% endfor %}
                 </div></div>
-                <div class="card-footer text-center py-4" style="background-color: var(--nav-grey); color: var(--primary-orange);">
-                    <div class="col-6 offset-3">
-                        <div class="input-group">
-                            {% if components.has_previous %}
-                                <a href="?page=1" class="btn btn-orange">First</a>
-                                <a href="?page={{ components.previous_page_number }}" class="btn btn-orange">Prev.</a>
-                            {% else %}
-                                <a class="btn btn-orange disabled">First</a>
-                                <a class="btn btn-orange disabled">Prev.</a>
-                            {% endif %}
 
-                            <div class="form-control text-center" style="background-color: var(--nav-grey); border: 1px solid var(--primary-orange); color: white;">
-                                Page {{ components.number }} of {{ components.paginator.num_pages }}
+                <div class="card-footer text-center py-3" style="background-color: var(--nav-grey); color: var(--primary-orange);">
+                    {% if paginate %}
+                        <div class="col-6 offset-3">
+                            <div class="input-group">
+                                {% if components.has_previous %}
+                                    <a href="?page=1" class="btn btn-orange">First</a>
+                                    <a href="?page={{ components.previous_page_number }}" class="btn btn-orange">Prev.</a>
+                                {% else %}
+                                    <a class="btn btn-orange disabled">First</a>
+                                    <a class="btn btn-orange disabled">Prev.</a>
+                                {% endif %}
+
+                                <div class="form-control text-center" style="background-color: var(--nav-grey); border: 1px solid var(--primary-orange); color: white;">
+                                    Page {{ components.number }} of {{ components.paginator.num_pages }}
+                                </div>
+
+                                {% if components.has_next %}
+                                    <a href="?page={{ components.next_page_number }}" class="btn btn-orange">Next</a>
+                                    <a href="?page={{ components.paginator.num_pages }}" class="btn btn-orange">Last</a>
+                                {% else %}
+                                    <a class="btn btn-orange disabled">Next</a>
+                                    <a class="btn btn-orange disabled">Last</a>
+                                {% endif %}
                             </div>
-
-                            {% if components.has_next %}
-                                <a href="?page={{ components.next_page_number }}" class="btn btn-orange">Next</a>
-                                <a href="?page={{ components.paginator.num_pages }}" class="btn btn-orange">Last</a>
-                            {% else %}
-                                <a class="btn btn-orange disabled">Next</a>
-                                <a class="btn btn-orange disabled">Last</a>
-                            {% endif %}
                         </div>
-                    </div>
+                    {% else %}
+                        <h5>End of {{ components|length }} result(s)</h5>
+                    {% endif %}
                 </div>
             {% endif %}
         </div>
