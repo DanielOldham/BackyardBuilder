@@ -24,7 +24,10 @@
                                         <strong>${{ build.total_price }}</strong> total cost
                                     </div>
                                     <div class="col-3 text-center">
-                                        <a href="{% url 'builds:view_build' build.id %}">view build</a>
+                                        <a href="{% url 'builds:view_build' build.id %}">
+                                            view build
+                                            <i class="bi bi-arrow-right"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </li>
@@ -35,7 +38,10 @@
 
             <div class="row card-body">
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <a href="{% url 'builds:new_build' %}" class="btn btn-primary btn-block">Create a new build plan</a>
+                    <a href="{% url 'builds:new_build' %}" class="btn btn-primary btn-block">
+                        <i class="bi bi-plus-circle"></i>
+                        Create a new build plan
+                    </a>
                 </div>
             </div>
         </div>

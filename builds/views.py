@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Build
+from .forms import BuildNameForm
 
 
 # Create your views here.
@@ -33,6 +34,13 @@ def view_build(request, build_id):
     build = Build.objects.get(id=build_id)
     context['build'] = build
 
+    form = BuildNameForm(request.POST or None, instance=build)
+
+    if form.is_valid():
+        form.save()
+        return redirect('builds:view_build', build_id)
+
+    context['form'] = form
     return render(request, 'builds/build_view.html', context)
 
 
