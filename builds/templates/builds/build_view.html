@@ -1,3 +1,164 @@
 {% extends 'dashboard/base.html' %}
 {% block body %}
+    <div class="col-8 offset-2 my-4">
+        <div class="card">
+            <h1 class="card-header text-center">
+                <i class="bi bi-clipboard-check"></i>
+                View Build
+            </h1>
+
+            <div class="card-body">
+                <h3 class="card-title text-center">
+                    "{{ build.name }}"
+                </h3>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-5 offset-1 text-center">
+                    <div class="card-text" style="font-size: 1.3rem;">
+                        Total cost: <strong>${{ build.total_price }}</strong>
+                    </div>
+                </div>
+                <div class="col-5 text-center">
+                    <div class="card-text" style="font-size: 1.3rem;">
+                        Selected <strong>{{ build.component_count }}&nbsp;/&nbsp;8</strong> components
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col-10 offset-1">
+                    <div class="accordion" id="buildAccordion">
+                        {# case accordion item #}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingCase" >
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCase" aria-expanded="true" aria-controls="collapseCase">
+                                    <i class="bi bi-box"></i>
+                                    &nbsp;&nbsp;Case
+                                </button>
+                            </h2>
+                            <div id="collapseCase" class="accordion-collapse collapse" aria-labelledby="headingCase">
+                                <div class="accordion-body">
+                                    case body
+                                </div>
+                            </div>
+                        </div>
+                        {# cooler accordion item #}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingCooler" >
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCooler" aria-expanded="true" aria-controls="collapseCooler">
+                                    <i class="bi bi-fan"></i>
+                                    &nbsp;&nbsp;Cooler
+                                </button>
+                            </h2>
+                            <div id="collapseCooler" class="accordion-collapse collapse" aria-labelledby="headingCooler">
+                                <div class="accordion-body">
+                                    cooler body
+                                </div>
+                            </div>
+                        </div>
+                        {# cpu accordion item #}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingCPU" >
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCPU" aria-expanded="true" aria-controls="collapseCPU">
+                                    <i class="bi bi-cpu"></i>
+                                    &nbsp;&nbsp;CPU
+                                </button>
+                            </h2>
+                            <div id="collapseCPU" class="accordion-collapse collapse" aria-labelledby="headingCPU">
+                                <div class="accordion-body">
+                                    cpu body
+                                </div>
+                            </div>
+                        </div>
+                        {# graphics accordion item #}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingGraphics" >
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGraphics" aria-expanded="true" aria-controls="collapseGraphics">
+                                    <i class="bi bi-gpu-card"></i>
+                                    &nbsp;&nbsp;Graphics
+                                </button>
+                            </h2>
+                            <div id="collapseGraphics" class="accordion-collapse collapse" aria-labelledby="headingGraphics">
+                                <div class="accordion-body">
+                                    graphics body
+                                </div>
+                            </div>
+                        </div>
+                        {# mobo accordion item #}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingMobo" >
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMobo" aria-expanded="true" aria-controls="collapseMobo">
+                                    <i class="bi bi-motherboard"></i>
+                                    &nbsp;&nbsp;Motherboard
+                                </button>
+                            </h2>
+                            <div id="collapseMobo" class="accordion-collapse collapse" aria-labelledby="headingMobo">
+                                <div class="accordion-body">
+                                    motherboard body
+                                </div>
+                            </div>
+                        </div>
+                        {# psu accordion item #}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingPSU" >
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePSU" aria-expanded="true" aria-controls="collapsePSU">
+                                    <i class="bi bi-plug"></i>
+                                    &nbsp;&nbsp;Power Supply
+                                </button>
+                            </h2>
+                            <div id="collapsePSU" class="accordion-collapse collapse" aria-labelledby="headingPSU">
+                                <div class="accordion-body">
+                                    psu body
+                                </div>
+                            </div>
+                        </div>
+                        {# ram accordion item #}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingRAM" >
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRAM" aria-expanded="true" aria-controls="collapseRAM">
+                                    <i class="bi bi-memory"></i>
+                                    &nbsp;&nbsp;Memory
+                                </button>
+                            </h2>
+                            <div id="collapseRAM" class="accordion-collapse collapse" aria-labelledby="headingRAM">
+                                <div class="accordion-body">
+                                    ram body
+                                </div>
+                            </div>
+                        </div>
+                        {# storage accordion item #}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingStorage" >
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStorage" aria-expanded="true" aria-controls="collapseStorage">
+                                    <i class="bi bi-device-hdd"></i>
+                                    &nbsp;&nbsp;Storage
+                                </button>
+                            </h2>
+                            <div id="collapseStorage" class="accordion-collapse collapse" aria-labelledby="headingStorage">
+                                <div class="accordion-body">
+                                    storage body
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <a href="{% url 'builds:build_list' %}" class="btn btn-primary">
+                            <i class="bi bi-arrow-return-left"></i>
+                            Back to build list
+                        </a>
+                    </div>
+                    <div class="col-6 text-center">
+                        <a href="#" class="btn btn-orange">Delete this build</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

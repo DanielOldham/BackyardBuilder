@@ -5,4 +5,5 @@ app_name = 'builds'
 urlpatterns = [
     path('', views.build_list, name='build_list'),
     path('new', views.new_build, name='new_build'),
+    path('<int:build_id>', views.view_build, name='view_build'),
 ]

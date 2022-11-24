@@ -12,8 +12,6 @@ def build_list(request):
     builds = Build.objects.filter(user=user)
     context['builds'] = builds
 
-    #context['costs'] = [build.total_price() for build in builds]
-
     return render(request, 'builds/build_list.html', context)
 
 
@@ -23,7 +21,16 @@ def new_build(request):
 
     user = request.user
     build = Build.objects.create(user=user)
+    context['build'] = build
 
+    return render(request, 'builds/build_view.html', context)
+
+
+@login_required
+def view_build(request, build_id):
+    context = {}
+
+    build = Build.objects.get(id=build_id)
     context['build'] = build
 
     return render(request, 'builds/build_view.html', context)
