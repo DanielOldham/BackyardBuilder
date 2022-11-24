@@ -155,7 +155,37 @@
                         </a>
                     </div>
                     <div class="col-6 text-center">
-                        <a href="#" class="btn btn-orange">Delete this build</a>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-orange" data-bs-toggle="modal" data-bs-target="#deleteBuildModal">
+                            <i class="bi bi-trash3"></i>
+                            Delete this build plan
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteBuildModal" tabindex="-1" aria-labelledby="deleteBuildModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="deleteBuildModalLabel">Delete Build Plan?</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to <span class="text-danger">delete</span> this build?<br>
+                                        This action cannot be undone!
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            <i class="bi bi-x-octagon"></i>
+                                            Close
+                                        </button>
+                                        <a class="btn btn-danger" href="{% url 'builds:delete_build' build.id %}">
+                                            <i class="bi bi-trash3"></i>
+                                            Delete!
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

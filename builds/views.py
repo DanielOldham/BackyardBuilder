@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Build
 
@@ -34,3 +34,14 @@ def view_build(request, build_id):
     context['build'] = build
 
     return render(request, 'builds/build_view.html', context)
+
+
+@login_required
+def delete_build(request, build_id):
+    build = Build.objects.get(id=build_id)
+
+    # just double check to make sure the build belongs to the user
+    if request.user == build.user:
+        build.delete()
+
+    return redirect('builds:build_list')
