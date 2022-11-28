@@ -53,3 +53,16 @@ def delete_build(request, build_id):
         build.delete()
 
     return redirect('builds:build_list')
+
+
+@login_required
+def remove_component(request, build_id, component_type):
+    build = Build.objects.get(id=build_id)
+
+    if request.user == build.user:
+        build.__setattr__(component_type, None)
+        build.save()
+        return redirect('builds:view_build', build.id)
+
+    # if the build doesn't belong to that user, redirect back to dashboard
+    return redirect('dashboard:dashboard')

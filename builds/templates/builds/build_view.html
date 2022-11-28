@@ -7,12 +7,6 @@
                 {{ build.name }}
             </h1>
 
-{#            <div class="card-body">#}
-{#                <h3 class="card-title text-center">#}
-{#                    "{{ build.name }}"#}
-{#                </h3>#}
-{#            </div>#}
-
             <div class="row my-3">
                 <div class="col-5 offset-1 text-center">
                     <div class="card-text" style="font-size: 1.3rem;">
@@ -40,7 +34,36 @@
                             </h2>
                             <div id="collapseCase" class="accordion-collapse collapse" aria-labelledby="headingCase">
                                 <div class="accordion-body">
-                                    case body
+                                    <div class="row">
+                                        {% if build.case %}
+                                            <div class="col-6" style="border-right: 1px solid lightgrey">
+                                                <a href="{% url 'components:detail' build.case.id %}">{{ build.case.name }}</a>
+                                            </div>
+                                            <div class="col-2 text-center my-auto">
+                                                <strong>${{ build.case.price }}</strong>
+                                            </div>
+                                            <div class="d-grid gap-2 col-4 mx-auto" style="border-left: 1px solid lightgrey">
+                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-search"></i>
+                                                        Search cases
+                                                    </a>
+                                                    <a href="{% url 'builds:remove_component' build.id 'case' %}" class="btn btn-sm btn-orange">
+                                                        <i class="bi bi-eraser"></i>
+                                                        Remove from plan
+                                                    </a>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-6 text-center" style="border-right: 1px solid lightgrey">
+                                                You haven't chosen a <strong>case</strong> yet!
+                                            </div>
+                                            <div class="col-6 text-center">
+                                                <a href="#" class="btn btn-sm btn-primary mb-2">
+                                                    <i class="bi bi-search"></i>
+                                                    Search cases
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +77,36 @@
                             </h2>
                             <div id="collapseCooler" class="accordion-collapse collapse" aria-labelledby="headingCooler">
                                 <div class="accordion-body">
-                                    cooler body
+                                    <div class="row">
+                                        {% if build.cooler %}
+                                            <div class="col-6" style="border-right: 1px solid lightgrey">
+                                                <a href="{% url 'components:detail' build.cooler.id %}">{{ build.cooler.name }}</a>
+                                            </div>
+                                            <div class="col-2 text-center my-auto">
+                                                <strong>${{ build.cooler.price }}</strong>
+                                            </div>
+                                            <div class="d-grid gap-2 col-4 mx-auto" style="border-left: 1px solid lightgrey">
+                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-search"></i>
+                                                        Search coolers
+                                                    </a>
+                                                    <a href="{% url 'builds:remove_component' build.id 'cooler' %}" class="btn btn-sm btn-orange">
+                                                        <i class="bi bi-eraser"></i>
+                                                        Remove from plan
+                                                    </a>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-6 text-center" style="border-right: 1px solid lightgrey">
+                                                You haven't chosen a <strong>cooler</strong> yet!
+                                            </div>
+                                            <div class="col-6 text-center">
+                                                <a href="#" class="btn btn-sm btn-primary mb-2">
+                                                    <i class="bi bi-search"></i>
+                                                    Search coolers
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +120,36 @@
                             </h2>
                             <div id="collapseCPU" class="accordion-collapse collapse" aria-labelledby="headingCPU">
                                 <div class="accordion-body">
-                                    cpu body
+                                    <div class="row">
+                                        {% if build.cpu %}
+                                            <div class="col-6" style="border-right: 1px solid lightgrey">
+                                                <a href="{% url 'components:detail' build.cpu.id %}">{{ build.cpu.name }}</a>
+                                            </div>
+                                            <div class="col-2 text-center my-auto">
+                                                <strong>${{ build.cpu.price }}</strong>
+                                            </div>
+                                            <div class="d-grid gap-2 col-4 mx-auto" style="border-left: 1px solid lightgrey">
+                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-search"></i>
+                                                        Search CPUs
+                                                    </a>
+                                                    <a href="{% url 'builds:remove_component' build.id 'cpu' %}" class="btn btn-sm btn-orange">
+                                                        <i class="bi bi-eraser"></i>
+                                                        Remove from plan
+                                                    </a>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-6 text-center" style="border-right: 1px solid lightgrey">
+                                                You haven't chosen a <strong>CPU</strong> yet!
+                                            </div>
+                                            <div class="col-6 text-center">
+                                                <a href="#" class="btn btn-sm btn-primary mb-2">
+                                                    <i class="bi bi-search"></i>
+                                                    Search CPUs
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +163,36 @@
                             </h2>
                             <div id="collapseGraphics" class="accordion-collapse collapse" aria-labelledby="headingGraphics">
                                 <div class="accordion-body">
-                                    graphics body
+                                    <div class="row">
+                                        {% if build.graphics %}
+                                            <div class="col-6" style="border-right: 1px solid lightgrey">
+                                                <a href="{% url 'components:detail' build.graphics.id %}">{{ build.graphics.name }}</a>
+                                            </div>
+                                            <div class="col-2 text-center my-auto">
+                                                <strong>${{ build.graphics.price }}</strong>
+                                            </div>
+                                            <div class="d-grid gap-2 col-4 mx-auto" style="border-left: 1px solid lightgrey">
+                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-search"></i>
+                                                        Search graphics
+                                                    </a>
+                                                    <a href="{% url 'builds:remove_component' build.id 'graphics' %}" class="btn btn-sm btn-orange">
+                                                        <i class="bi bi-eraser"></i>
+                                                        Remove from plan
+                                                    </a>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-6 text-center" style="border-right: 1px solid lightgrey">
+                                                You haven't chosen a <strong>graphics card</strong> yet!
+                                            </div>
+                                            <div class="col-6 text-center">
+                                                <a href="#" class="btn btn-sm btn-primary mb-2">
+                                                    <i class="bi bi-search"></i>
+                                                    Search graphics
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +206,36 @@
                             </h2>
                             <div id="collapseMobo" class="accordion-collapse collapse" aria-labelledby="headingMobo">
                                 <div class="accordion-body">
-                                    motherboard body
+                                    <div class="row">
+                                        {% if build.motherboard %}
+                                            <div class="col-6" style="border-right: 1px solid lightgrey">
+                                                <a href="{% url 'components:detail' build.motherboard.id %}">{{ build.motherboard.name }}</a>
+                                            </div>
+                                            <div class="col-2 text-center my-auto">
+                                                <strong>${{ build.motherboard.price }}</strong>
+                                            </div>
+                                            <div class="d-grid gap-2 col-4 mx-auto" style="border-left: 1px solid lightgrey">
+                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-search"></i>
+                                                        Search motherboards
+                                                    </a>
+                                                    <a href="{% url 'builds:remove_component' build.id 'motherboard' %}" class="btn btn-sm btn-orange">
+                                                        <i class="bi bi-eraser"></i>
+                                                        Remove from plan
+                                                    </a>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-6 text-center" style="border-right: 1px solid lightgrey">
+                                                You haven't chosen a <strong>motherboard</strong> yet!
+                                            </div>
+                                            <div class="col-6 text-center">
+                                                <a href="#" class="btn btn-sm btn-primary mb-2">
+                                                    <i class="bi bi-search"></i>
+                                                    Search motherboards
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +249,36 @@
                             </h2>
                             <div id="collapsePSU" class="accordion-collapse collapse" aria-labelledby="headingPSU">
                                 <div class="accordion-body">
-                                    psu body
+                                    <div class="row">
+                                        {% if build.cooler %}
+                                            <div class="col-6" style="border-right: 1px solid lightgrey">
+                                                <a href="{% url 'components:detail' build.powersupply.id %}">{{ build.powersupply.name }}</a>
+                                            </div>
+                                            <div class="col-2 text-center my-auto">
+                                                <strong>${{ build.powersupply.price }}</strong>
+                                            </div>
+                                            <div class="d-grid gap-2 col-4 mx-auto" style="border-left: 1px solid lightgrey">
+                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-search"></i>
+                                                        Search PSUs
+                                                    </a>
+                                                    <a href="{% url 'builds:remove_component' build.id 'powersupply' %}" class="btn btn-sm btn-orange">
+                                                        <i class="bi bi-eraser"></i>
+                                                        Remove from plan
+                                                    </a>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-6 text-center" style="border-right: 1px solid lightgrey">
+                                                You haven't chosen a <strong>PSU</strong> yet!
+                                            </div>
+                                            <div class="col-6 text-center">
+                                                <a href="#" class="btn btn-sm btn-primary mb-2">
+                                                    <i class="bi bi-search"></i>
+                                                    Search PSUs
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +292,36 @@
                             </h2>
                             <div id="collapseRAM" class="accordion-collapse collapse" aria-labelledby="headingRAM">
                                 <div class="accordion-body">
-                                    ram body
+                                    <div class="row">
+                                        {% if build.ram %}
+                                            <div class="col-6" style="border-right: 1px solid lightgrey">
+                                                <a href="{% url 'components:detail' build.ram.id %}">{{ build.ram.name }}</a>
+                                            </div>
+                                            <div class="col-2 text-center my-auto">
+                                                <strong>${{ build.ram.price }}</strong>
+                                            </div>
+                                            <div class="d-grid gap-2 col-4 mx-auto" style="border-left: 1px solid lightgrey">
+                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-search"></i>
+                                                        Search RAM
+                                                    </a>
+                                                    <a href="{% url 'builds:remove_component' build.id 'ram' %}" class="btn btn-sm btn-orange">
+                                                        <i class="bi bi-eraser"></i>
+                                                        Remove from plan
+                                                    </a>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-6 text-center" style="border-right: 1px solid lightgrey">
+                                                You haven't chosen <strong>RAM</strong> yet!
+                                            </div>
+                                            <div class="col-6 text-center">
+                                                <a href="#" class="btn btn-sm btn-primary mb-2">
+                                                    <i class="bi bi-search"></i>
+                                                    Search RAM
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +335,36 @@
                             </h2>
                             <div id="collapseStorage" class="accordion-collapse collapse" aria-labelledby="headingStorage">
                                 <div class="accordion-body">
-                                    storage body
+                                    <div class="row">
+                                        {% if build.storage %}
+                                            <div class="col-6" style="border-right: 1px solid lightgrey">
+                                                <a href="{% url 'components:detail' build.storage.id %}">{{ build.storage.name }}</a>
+                                            </div>
+                                            <div class="col-2 text-center my-auto">
+                                                <strong>${{ build.storage.price }}</strong>
+                                            </div>
+                                            <div class="d-grid gap-2 col-4 mx-auto" style="border-left: 1px solid lightgrey">
+                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-search"></i>
+                                                        Search storage
+                                                    </a>
+                                                    <a href="{% url 'builds:remove_component' build.id 'storage' %}" class="btn btn-sm btn-orange">
+                                                        <i class="bi bi-eraser"></i>
+                                                        Remove from plan
+                                                    </a>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-6 text-center" style="border-right: 1px solid lightgrey">
+                                                You haven't chosen <strong>storage</strong> yet!
+                                            </div>
+                                            <div class="col-6 text-center">
+                                                <a href="#" class="btn btn-sm btn-primary mb-2">
+                                                    <i class="bi bi-search"></i>
+                                                    Search storage
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +393,10 @@
                                     {% csrf_token %}
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="editNameModalLabel">Edit plan name</h1>
+                                            <h1 class="modal-title fs-5" id="editNameModalLabel">
+                                                <i class="bi bi-pencil-square"></i>
+                                                Edit plan name
+                                            </h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">

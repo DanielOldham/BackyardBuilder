@@ -7,4 +7,5 @@ urlpatterns = [
     path('new', views.new_build, name='new_build'),
     path('<int:build_id>', views.view_build, name='view_build'),
     path('<int:build_id>/delete', views.delete_build, name='delete_build'),
+    path('<int:build_id>/<str:component_type>/remove', views.remove_component, name='remove_component'),
 ]

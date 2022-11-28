@@ -44,7 +44,7 @@ class Build(models.Model):
         for component in components:
             total_price += component.price
 
-        return total_price
+        return round(total_price, 2)
 
     def component_count(self):
         count = 0
