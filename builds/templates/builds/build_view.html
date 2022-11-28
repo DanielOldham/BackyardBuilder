@@ -250,7 +250,7 @@
                             <div id="collapsePSU" class="accordion-collapse collapse" aria-labelledby="headingPSU">
                                 <div class="accordion-body">
                                     <div class="row">
-                                        {% if build.cooler %}
+                                        {% if build.powersupply %}
                                             <div class="col-6" style="border-right: 1px solid lightgrey">
                                                 <a href="{% url 'components:detail' build.powersupply.id %}">{{ build.powersupply.name }}</a>
                                             </div>

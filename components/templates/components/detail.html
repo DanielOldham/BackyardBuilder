@@ -42,9 +42,13 @@
                             </a>
 
                             <ul class="dropdown-menu" style="border-color: black">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                {% if builds %}
+                                    {% for build in builds %}
+                                        <li><a href="{% url 'builds:add_component' build.id component.id %}" class="dropdown-item">{{ build.name }}</a></li>
+                                    {% endfor %}
+                                    <li><hr class="dropdown-divider"></li>
+                                {% endif %}
+                                <a href="{% url 'builds:new_build_component' component.id %}" class="dropdown-item">Create a new build</a>
                             </ul>
                         </div>
 

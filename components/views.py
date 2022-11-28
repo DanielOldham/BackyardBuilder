@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import *
 from django.core.paginator import Paginator
 from django.apps import apps
+from builds.models import Build
 
 
 # Create your views here.
@@ -54,8 +55,11 @@ def search(request):
 def detail(request, component_id):
     context = {}
 
+    builds = Build.objects.filter(user=request.user)
     component = Component.objects.get(id=component_id)
+
     context['type'] = component.get_type()
+    context['builds'] = builds
     context['component'] = component.get_child()
 
     return render(request, 'components/detail.html', context)
