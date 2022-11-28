@@ -141,33 +141,48 @@
                 {% endfor %}
                 </div></div>
 
-                <div class="card-footer text-center py-3" style="background-color: var(--nav-grey); color: var(--primary-orange);">
+                <div class="card-footer text-center" style="background-color: var(--nav-grey); color: var(--primary-orange);">
                     {% if paginate %}
-                        <div class="col-6 offset-3">
-                            <div class="input-group">
+                        <nav class="pt-2">
+                            <ul class="pagination justify-content-center">
+                                {# first and next buttons #}
                                 {% if components.has_previous %}
-                                    <a href="?page=1" class="btn btn-orange">First</a>
-                                    <a href="?page={{ components.previous_page_number }}" class="btn btn-orange">Prev.</a>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=1" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="?page={{ components.previous_page_number }}">{{ components.previous_page_number }}</a></li>
                                 {% else %}
-                                    <a class="btn btn-orange disabled">First</a>
-                                    <a class="btn btn-orange disabled">Prev.</a>
+                                    <li class="page-item disabled">
+                                        <a class="page-link">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
                                 {% endif %}
 
-                                <div class="form-control text-center" style="background-color: var(--nav-grey); border: 1px solid var(--primary-orange); color: white;">
-                                    Page {{ components.number }} of {{ components.paginator.num_pages }}
-                                </div>
+                                {# current button #}
+                                <li class="page-item active"><a class="page-link">{{ components.number }}</a></li>
 
+                                {# next button and last button #}
                                 {% if components.has_next %}
-                                    <a href="?page={{ components.next_page_number }}" class="btn btn-orange">Next</a>
-                                    <a href="?page={{ components.paginator.num_pages }}" class="btn btn-orange">Last</a>
+                                    <li class="page-item"><a class="page-link" href="?page={{ components.next_page_number }}">{{ components.next_page_number }}</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ components.paginator.num_pages }}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
                                 {% else %}
-                                    <a class="btn btn-orange disabled">Next</a>
-                                    <a class="btn btn-orange disabled">Last</a>
+                                    <li class="page-item">
+                                        <a class="page-link disabled">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
                                 {% endif %}
-                            </div>
-                        </div>
+                            </ul>
+                        </nav>
                     {% else %}
-                        <h5>End of {{ components|length }} result(s)</h5>
+                        <h5 class="py-3">End of {{ components|length }} result(s)</h5>
                     {% endif %}
                 </div>
             {% endif %}
