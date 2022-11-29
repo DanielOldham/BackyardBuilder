@@ -30,6 +30,11 @@ def view_build(request, build_id):
     context = {}
 
     build = Build.objects.get(id=build_id)
+
+    # user should not be able to view a build that isn't theirs
+    if build.user != request.user:
+        return redirect('builds:build_list')
+
     context['build'] = build
 
     form = BuildNameForm(request.POST or None, instance=build)
@@ -57,18 +62,23 @@ def delete_build(request, build_id):
 def remove_component(request, build_id, component_type):
     build = Build.objects.get(id=build_id)
 
-    if request.user == build.user:
-        build.__setattr__(component_type, None)
-        build.save()
-        return redirect('builds:view_build', build.id)
-
     # if the build doesn't belong to that user, redirect back to dashboard
-    return redirect('dashboard:dashboard')
+    if request.user != build.user:
+        return redirect('builds:build_list')
+
+    build.__setattr__(component_type, None)
+    build.save()
+    return redirect('builds:view_build', build.id)
 
 
 @login_required
 def add_component(request, build_id, component_id):
     build = Build.objects.get(id=build_id)
+
+    # if the build doesn't belong to that user, redirect back to dashboard
+    if request.user != build.user:
+        return redirect('builds:build_list')
+
     component = Component.objects.get(id=component_id)
 
     build.__setattr__(component.get_type().lower(), component.get_child())

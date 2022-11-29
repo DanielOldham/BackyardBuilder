@@ -1,7 +1,7 @@
 {% extends 'dashboard/base.html' %}
 {% block body %}
     <div class="row">
-        <div class="col-8 offset-2 my-4">
+        <div class="col-6 offset-3 my-4">
             <div class="card">
                 <h2 class="card-header">
                     {% if request.user.is_authenticated %}
@@ -12,7 +12,20 @@
                 </h2>
 
                 <div class="card-body">
-                    <div class="card-text">Welcome to the Backyard Builder!</div>
+                    <div class="card-text pb-3">
+                        Welcome to the Backyard Builder!
+                        <br><br>
+                        With this application you can browse PC components that have been uploaded to our database, and combine them to make your Dream PC Build!
+                        <br>
+                        You can start searching through components by clicking on the <a href="{% url 'components:search' %}">Components</a> tab in the navbar.
+                        <br>
+                        In order to save your <a href="{% url 'builds:build_list' %}">Build Plans</a>, you will need to sign in or create an account with us. Click on the <a href="{% url 'authentication:login' %}">Login</a> button to do so.
+                    </div>
+                </div>
+                <div class="card-footer" style="background-color: var(--nav-grey); color: var(--primary-orange);">
+                    <h4>
+                        Let's get building!
+                    </h4>
                 </div>
             </div>
         </div>
