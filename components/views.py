@@ -55,11 +55,13 @@ def search(request):
 def detail(request, component_id):
     context = {}
 
-    builds = Build.objects.filter(user=request.user)
     component = Component.objects.get(id=component_id)
+    # check to see if user is logged in before adding builds
+    if request.user.is_authenticated:
+        builds = Build.objects.filter(user=request.user)
+        context['builds'] = builds
 
     context['type'] = component.get_type()
-    context['builds'] = builds
     context['component'] = component.get_child()
 
     return render(request, 'components/detail.html', context)
