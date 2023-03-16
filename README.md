@@ -24,7 +24,3 @@ The project was created to demonstrate knowledge of server-side web development 
 
 - Author: Daniel Oldham
 - Components: grabbed from <a href="https://newegg.com">newegg</a>
-
-
-<h2>Copyright</h2>
-This project is licensed under the terms of the MIT license and protected by Udacity Honor Code and Community Code of Conduct. See <a href="LICENSE.md">license</a> and <a href="LICENSE.DISCLAIMER.md">disclaimer</a>.
