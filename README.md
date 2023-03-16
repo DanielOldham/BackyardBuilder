@@ -22,7 +22,8 @@ The project was created to demonstrate knowledge of server-side web development 
 
 <h2>Credits</h2>
 
-- Author: 
+- Author: Daniel Oldham
+- Components: grabbed from <a href="https://newegg.com">newegg</a>
 
 
 <h2>Copyright</h2>
