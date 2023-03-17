@@ -5,7 +5,7 @@
 <h2>About</h2>
 This is the final assignment for WSU's server-side web development class. When run, the project functions as a PC planner website for users to view computer components for sale, as well as create and modify different possible PC "builds".
 
-<h2>Goal and requirements</h2>
+<h2>Goals</h2>
 
 The project was created to demonstrate knowledge of server-side web development concepts and practices, as well as proficiency in the Django framework and Object-Oriented Python programming. 
 
@@ -18,7 +18,6 @@ The project was created to demonstrate knowledge of server-side web development 
 - Django web form concepts
 - Django pagination concepts
 
-#If project has been improved after submission, here is a good place to specify it.
 
 <h2>Credits</h2>
 
