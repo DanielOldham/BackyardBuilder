@@ -3,8 +3,12 @@ from django.contrib.auth.models import User
 from components.models import Component, Case, Cooler, CPU, Graphics, Motherboard, PowerSupply, RAM, Storage
 
 
-# Create your models here.
 class Build(models.Model):
+    """
+    Django Model.
+    Details one specific build belonging to a user.
+    """
+
     name = models.CharField(max_length=75, default='My PC Plan')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     case = models.ForeignKey(Case, on_delete=models.SET_NULL, null=True, default=None)
@@ -20,6 +24,12 @@ class Build(models.Model):
         return self.name
 
     def total_price(self):
+        """
+        Add up the total price of each component that is not None.
+
+        :return: total price in dollars
+        """
+
         total_price = 0
         components = []
 
@@ -47,6 +57,12 @@ class Build(models.Model):
         return round(total_price, 2)
 
     def component_count(self):
+        """
+        Calculate number of components selected in the build.
+
+        :return: number of components that are not None
+        """
+
         count = 0
 
         if self.case is not None:

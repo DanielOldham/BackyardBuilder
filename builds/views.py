@@ -14,6 +14,7 @@ def build_list(request):
     :param request: Django request
     :return: rendered build_list template
     """
+
     context = {}
 
     user = request.user
@@ -31,6 +32,7 @@ def new_build(request):
     :param request: Django request
     :return: redirect to builds:view_build
     """
+
     user = request.user
     build = Build.objects.create(user=user)
 
@@ -47,6 +49,7 @@ def view_build(request, build_id):
     :param build_id: id of the build to display
     :return: redirect to builds:build_list
     """
+
     context = {}
 
     build = Build.objects.get(id=build_id)
@@ -77,6 +80,7 @@ def delete_build(request, build_id):
     :param build_id: id of the build to delete
     :return: redirect to builds:build_list
     """
+
     build = Build.objects.get(id=build_id)
 
     # just double check to make sure the build belongs to the user
@@ -97,6 +101,7 @@ def remove_component(request, build_id, component_type):
     :param component_type: type of component to remove from build
     :return: redirect to builds:view_build
     """
+
     build = Build.objects.get(id=build_id)
 
     # if the build doesn't belong to that user, redirect back to dashboard
@@ -119,6 +124,7 @@ def add_component(request, build_id, component_id):
     :param component_id: id of the component to add
     :return: redirect to builds:build_list
     """
+
     build = Build.objects.get(id=build_id)
 
     # if the build doesn't belong to that user, redirect back to dashboard
@@ -143,6 +149,7 @@ def new_build_component(request, component_id):
     :param component_id: id of the component to add to the new build
     :return: redirect to builds:view_build
     """
+
     build = Build.objects.create(user=request.user)
     component = Component.objects.get(id=component_id)
 
