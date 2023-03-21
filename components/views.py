@@ -5,14 +5,23 @@ from django.apps import apps
 from builds.models import Build
 
 
-# Create your views here.
 def search(request):
+    """
+    Django view.
+    Display paginated list of components to the user.
+    The components may be filtered by the user through a form.
+
+    :param request: Django request
+    :return: rendered search template
+    """
+
     context = {}
     paginate = True
 
     # get all form items
     radio_input = request.GET.get('componentRadio')
     if radio_input is not None:
+        # get model with string name
         search_model = apps.get_model('components', radio_input)
         if radio_input != 'Component':
             paginate = False
@@ -53,10 +62,19 @@ def search(request):
 
 
 def detail(request, component_id):
+    """
+    Django view.
+    Display detailed view of one single component.
+
+    :param request: Django request.
+    :param component_id: id of the component to display
+    :return: rendered detail template
+    """
+
     context = {}
 
     component = Component.objects.get(id=component_id)
-    # check to see if user is logged in before adding builds
+    # check to see if user is logged in before displaying possible builds
     if request.user.is_authenticated:
         builds = Build.objects.filter(user=request.user)
         context['builds'] = builds

@@ -5,8 +5,15 @@ from .forms import SignupForm, LoginForm
 from django.contrib.auth import logout
 
 
-# Create your views here.
 def login(request):
+    """
+    Django view.
+    Display login page to user.
+
+    :param request: Django request
+    :return: rendered login template if request is GET (or if there are errors), else returns redirect to dashboard view
+    """
+
     if request.method == 'GET':
         form = LoginForm()
         return render(request, 'authentication/login.html', {'form': form})
@@ -26,11 +33,27 @@ def login(request):
 
 
 def logout_user(request):
+    """
+    Django view.
+    Logout the current user.
+
+    :param request: Django request
+    :return: redirect to authentication:login
+    """
+
     logout(request)
     return redirect('authentication:login')
 
 
 def signup(request):
+    """
+    Django view.
+    Display signup page.
+
+    :param request: Django request
+    :return: rendered signup template if request is GET (or there are errors), else return redirect to dashboard view
+    """
+
     if request.method == 'GET':
         form = SignupForm()
         return render(request, 'authentication/signup.html', {'form': form})
