@@ -1,13 +1,16 @@
-from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
 
 
 class SignupForm(UserCreationForm):
-    # Loops through fields and adds a bootstrap form-control class
+    """
+    Django UserCreationForm.
+    Sets up user creation form and adds CSS bootstrap classes and HTML placeholders.
+    """
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # Loops through fields and adds a bootstrap form-control class
         for field in self.fields.values():
             field.widget.attrs["class"] = "form-control"
 
@@ -19,15 +22,23 @@ class SignupForm(UserCreationForm):
         self.fields['password2'].widget.attrs.update({'placeholder': 'confirm your password'})
 
     class Meta:
+        """
+        Django Meta inner class.
+        """
         model = User
 
         fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2']
 
 
 class LoginForm(AuthenticationForm):
-    # Loops through fields and adds a bootstrap form-control class
+    """
+    Django AuthenticationForm.
+    Sets up authentication form and adds CSS bootstrap classes and HTML placeholders.
+    """
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # Loops through fields and adds a bootstrap form-control class
         for field in self.fields.values():
             field.widget.attrs["class"] = "form-control"
 
