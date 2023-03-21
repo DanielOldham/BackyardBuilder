@@ -5,9 +5,15 @@ from .forms import BuildNameForm
 from components.models import Component
 
 
-# Create your views here.
 @login_required
 def build_list(request):
+    """
+    Django view.
+    Display a list of the current user's builds
+
+    :param request: Django request
+    :return: rendered build_list template
+    """
     context = {}
 
     user = request.user
@@ -19,6 +25,12 @@ def build_list(request):
 
 @login_required
 def new_build(request):
+    """
+    Create new build belonging to current user.
+
+    :param request: Django request
+    :return: redirect to builds:view_build
+    """
     user = request.user
     build = Build.objects.create(user=user)
 
@@ -27,6 +39,14 @@ def new_build(request):
 
 @login_required
 def view_build(request, build_id):
+    """
+    Django view.
+    Display a detailed view of one specific build belonging to a user.
+
+    :param request: Django request
+    :param build_id: id of the build to display
+    :return: redirect to builds:build_list
+    """
     context = {}
 
     build = Build.objects.get(id=build_id)
@@ -49,6 +69,14 @@ def view_build(request, build_id):
 
 @login_required
 def delete_build(request, build_id):
+    """
+    Django view.
+    Delete the build associated with the given build_id.
+
+    :param request: Django request
+    :param build_id: id of the build to delete
+    :return: redirect to builds:build_list
+    """
     build = Build.objects.get(id=build_id)
 
     # just double check to make sure the build belongs to the user
@@ -60,6 +88,15 @@ def delete_build(request, build_id):
 
 @login_required
 def remove_component(request, build_id, component_type):
+    """
+    Django view.
+    Remove specific component from the given build.
+
+    :param request: Django request.
+    :param build_id: id of the build to remove component from
+    :param component_type: type of component to remove from build
+    :return: redirect to builds:view_build
+    """
     build = Build.objects.get(id=build_id)
 
     # if the build doesn't belong to that user, redirect back to dashboard
@@ -73,6 +110,15 @@ def remove_component(request, build_id, component_type):
 
 @login_required
 def add_component(request, build_id, component_id):
+    """
+    Django view.
+    Add specific component to a user's build.
+
+    :param request: Django request
+    :param build_id: id of the build to add component to
+    :param component_id: id of the component to add
+    :return: redirect to builds:build_list
+    """
     build = Build.objects.get(id=build_id)
 
     # if the build doesn't belong to that user, redirect back to dashboard
@@ -89,6 +135,14 @@ def add_component(request, build_id, component_id):
 
 @login_required
 def new_build_component(request, component_id):
+    """
+    Django view.
+    Create a new build and add the associated component.
+
+    :param request: Django request
+    :param component_id: id of the component to add to the new build
+    :return: redirect to builds:view_build
+    """
     build = Build.objects.create(user=request.user)
     component = Component.objects.get(id=component_id)
 
